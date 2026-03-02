@@ -2,7 +2,7 @@ package org.delcom.repositories
 
 import org.delcom.dao.PlantDAO
 import org.delcom.entities.Plant
-import org.delcom.helpers.daoToModel
+import org.delcom.helpers.plantDaoToModel
 import org.delcom.helpers.suspendTransaction
 import org.delcom.tables.PlantTable
 import org.jetbrains.exposed.sql.SortOrder
@@ -17,7 +17,7 @@ class PlantRepository : IPlantRepository {
             PlantDAO.all()
                 .orderBy(PlantTable.createdAt to SortOrder.DESC)
                 .limit(20)
-                .map(::daoToModel)
+                .map(::plantDaoToModel)
         } else {
             val keyword = "%${search.lowercase()}%"
 
@@ -27,7 +27,7 @@ class PlantRepository : IPlantRepository {
                 }
                 .orderBy(PlantTable.nama to SortOrder.ASC)
                 .limit(20)
-                .map(::daoToModel)
+                .map(::plantDaoToModel)
         }
     }
 
@@ -35,7 +35,7 @@ class PlantRepository : IPlantRepository {
         PlantDAO
             .find { (PlantTable.id eq UUID.fromString(id)) }
             .limit(1)
-            .map(::daoToModel)
+            .map(::plantDaoToModel)
             .firstOrNull()
     }
 
@@ -43,7 +43,7 @@ class PlantRepository : IPlantRepository {
         PlantDAO
             .find { (PlantTable.nama eq name) }
             .limit(1)
-            .map(::daoToModel)
+            .map(::plantDaoToModel)
             .firstOrNull()
     }
 

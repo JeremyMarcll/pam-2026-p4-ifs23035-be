@@ -33,13 +33,13 @@ fun serpentDaoToModel(dao: SerpentDAO) = Serpent(
 // =========================
 // PLANT MAPPING
 // =========================
-fun daoToModel(dao: PlantDAO) = Plant(
-    dao.id.value.toString(),
-    dao.nama,
-    dao.pathGambar,
-    dao.deskripsi,
-    dao.manfaat,
-    dao.efekSamping,
-    dao.createdAt,
-    dao.updatedAt
+fun plantDaoToModel(dao: PlantDAO) = Plant(
+    id = dao.id.value.toString(),
+    nama = dao.nama,
+    pathGambar = dao.pathGambar,
+    deskripsi = dao.deskripsi,
+    manfaat = dao.manfaat,
+    efekSamping = dao.efekSamping,
+    createdAt = dao.createdAt,
+    updatedAt = dao.updatedAt
 )
